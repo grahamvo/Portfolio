@@ -1,0 +1,80 @@
+//Header Style
+
+.header-main {
+    opacity: 0;
+    color: $main-gray;
+    width: 100%;
+    padding-top: 20px;
+    position: fixed;
+    z-index: 3;
+    background-color: rgba(300, 300, 300, 0.9);
+
+    animation: fadeIn .5s;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+
+    .name > a {
+        color: $main-gray;
+        text-decoration: none;
+    }
+
+    .left-links {
+        text-align: right;
+    }
+
+    .active {
+        border-bottom: 2px solid $main-red;
+        padding-bottom: 1px;
+    }
+
+    li {
+        list-style-type: none;
+        display: inline-block;
+        padding: 0px 10px 0px 10px;
+    }
+
+    li > a:hover {
+        color: $main-gray;
+        text-decoration: none;
+    }
+
+    li > a {
+        color: $main-gray;
+        text-decoration: none;
+
+    }
+
+    li > a:after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 0;
+        background: transparent;
+        transition: width .25s ease-in-out, background-color .25s ease-in-out;
+    }
+
+    li > a:hover:after {
+        background: $main-red;
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        .name {
+            font-size: 12px;
+            display: none;
+        }
+
+        ul {
+            padding-left: 0px;
+        }
+
+        li {
+            padding: 0px 20px 0px 20px;
+        }
+
+        .left-links {
+            font-size: 12px;
+            text-align: center;
+        }
+    }
+}

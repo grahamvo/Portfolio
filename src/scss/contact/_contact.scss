@@ -1,0 +1,11 @@
+.contact-main {
+    padding-top: 100px;
+
+    .status {
+        color: $success;
+        animation: fadeIn 3s;
+        animation-fill-mode: forwards;
+        opacity: 0;
+        font-weight: 300;
+    }
+}

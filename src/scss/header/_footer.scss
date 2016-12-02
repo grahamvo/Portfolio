@@ -1,0 +1,23 @@
+.icon-row-footer {
+    margin-top: 0px;
+    margin-bottom: 50px;
+    font-size: 20px;
+    text-align: center;
+
+    i {
+        padding: 0px 10px 0px 10px;
+        color: $main-red;
+        transition: color .5s;
+    }
+
+    i:hover {
+        color: $main-gray;
+        cursor: pointer;
+    }
+
+    h5 {
+        color: $main-red;
+        font-size: 11px;
+        font-weight: 300;
+    }
+}

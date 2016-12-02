@@ -1,0 +1,152 @@
+//Styling for Home page
+.home-main {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.big-hello-no {
+    color: #fff;
+    text-align: center;
+    background-color: $main-red;
+
+    h1 {
+        font-size: 100px;
+        font-weight: 300;
+        margin-top: 10px;
+    }
+
+    @media (max-width: 1200px) {
+        h1 {
+            font-size: 89px !important;
+        }
+    }
+
+    @media (max-width: 992px) {
+        h1 {
+            font-size: 66px !important;
+        }
+    }
+}
+
+.big-hello {
+    color: #fff;
+    text-align: center;
+    animation: slideIn 2s;
+    background-color: $main-red;
+
+    h1 {
+        font-size: 100px;
+        font-weight: 300;
+        margin-top: 10px;
+    }
+
+    @media (max-width: 1200px) {
+        h1 {
+            font-size: 89px !important;
+        }
+    }
+
+    @media (max-width: 992px) {
+        h1 {
+            font-size: 66px !important;
+        }
+    }
+}
+
+.little-hello-no {
+    opacity: 0;
+    color: $main-red;
+    background-color: #fff;
+
+    h1 {
+        font-size: 50px;
+        font-size: 4vw;
+        font-weight: 300;
+        padding-top: 35px;
+    }
+
+    @media (max-width: 992px) {
+        h1 {
+            padding-top: 19px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            text-align: center;
+        }
+    }
+}
+
+.little-hello {
+    opacity: 0;
+    color: $main-red;
+    background-color: #fff;
+    animation: fadeIn 3s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+
+    h1 {
+        font-size: 50px;
+        font-size: 4vw;
+        font-weight: 300;
+        padding-top: 35px;
+    }
+
+    @media (max-width: 992px) {
+        h1 {
+            padding-top: 19px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            text-align: center;
+        }
+    }
+}
+
+.hello-container {
+    margin-top: 250px
+}
+
+.icon-row-no {
+    opacity: 0;
+    margin-top: 150px;
+    font-size: 20px;
+    text-align: center;
+
+    i {
+        padding: 0px 10px 0px 10px;
+        color: $main-red;
+        transition: color .5s;
+    }
+
+    i:hover {
+        color: $main-gray;
+        cursor: pointer;
+    }
+}
+
+.icon-row {
+    opacity: 0;
+    margin-top: 150px;
+    font-size: 20px;
+    text-align: center;
+    animation: fadeIn .5s;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+
+    i {
+        padding: 0px 10px 0px 10px;
+        color: $main-red;
+        transition: color .5s;
+    }
+
+    i:hover {
+        color: $main-gray;
+        cursor: pointer;
+    }
+}
