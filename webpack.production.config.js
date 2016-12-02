@@ -12,11 +12,10 @@ const data = require('./data');
 
 module.exports = {
     devtool: 'eval',
-    entry: [
-        'webpack-dev-server/client?http://0.0.0.0:3000',
-        'webpack/hot/only-dev-server',
-        `${__dirname}/src/js/App`
-    ],
+    entry: {
+        main: './app-client.js',
+        css: './src/scss/app.scss'
+    },
     output: {
         path: `${__dirname}/public/dist`,
         filename: '[name].bundle.js',
