@@ -1,0 +1,805 @@
+@import "../color";
+@import "../keyframes";
+@import "../mixins";
+
+.container {
+    font-family: 'Quicksand', sans-serif;
+    background-color: $background;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+}
+
+.text {
+    position: absolute;
+    margin-left: 75px;
+    top: 15%;
+
+    .header {
+        @include for-phone-only {
+            font-size: 27pt;
+        }
+
+        @include for-tablet-portrait-up {
+            font-size: 40pt;
+        }
+
+        @include for-tablet-landscape-up {
+            font-size: 40pt;
+        }
+
+        @include for-desktop-up {
+            font-size: 58pt;
+        }
+
+        @include for-big-desktop-up {
+            font-size: 63pt;
+        }
+    }
+
+    .subHeader {
+        padding-top: 5px;
+
+        @include for-phone-only {
+            font-size: 13pt;
+        }
+
+        @include for-tablet-portrait-up {
+            font-size: 17pt;
+        }
+
+        @include for-tablet-landscape-up {
+            font-size: 17pt;
+        }
+
+        @include for-desktop-up {
+            font-size: 23pt;
+        }
+
+        @include for-big-desktop-up {
+            font-size: 28pt;
+        }
+    }
+
+    @include for-tablet-portrait-only {
+        margin-left: 50px;
+        top: 10%;
+    }
+}
+
+.treeContainer {
+    position: absolute;
+    width: 75%;
+    right: 0;
+    bottom: 30%;
+    overflow: hidden;
+
+    @include for-phone-only {
+        width: 100%;
+    }
+
+    .bottomLine {
+        border-bottom: 7px solid $treeTrunk;
+        animation: drawLine 1.5s ease-in-out;
+        z-index: 25;
+        position: relative;
+    }
+
+    .fakeTree {
+        height: 300px;
+    }
+
+    .basicTree {
+        opacity: 0;
+        display: inline-block;
+        background-color: $treeTrunk;
+        width: 7px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        border-radius: 5px;
+        margin-bottom: -9px;
+        animation: grow .75s cubic-bezier(1, 0, 0.62, 1.5) forwards;
+
+        @include for-phone-only {
+            width: 4px;
+        }
+
+        @include for-tablet-portrait-only {
+            width: 5px;
+        }
+    }
+
+    .basicBranch {
+        width: 7px;
+        border-radius: 5px;
+        background-color: $treeTrunk;
+
+        @include for-phone-only {
+            width: 4px;
+        }
+
+        @include for-tablet-portrait-only {
+            width: 5px;
+        }
+    }
+
+    .basicFiller {
+        opacity: 0;
+        width: 100%;
+        position: absolute;
+        animation: popIn .5s linear forwards;
+    }
+
+    .firstTreeContainer {
+        display: inline-block;
+        position: relative;
+        margin-left: 35%;
+        z-index: 20;
+
+        .smallGreen {
+            @extend .basicFiller;
+            margin-top: -50px;
+            animation-delay: 4.5s;
+
+            @include for-phone-only {
+                margin-top: -20px;
+            }
+
+            @include for-tablet-portrait-up {
+                margin-top: -30px;
+            }
+
+            @include for-tablet-landscape-up {
+                margin-top: -40px;
+            }
+
+            @include for-desktop-up {
+                margin-top: -50px;
+            }
+
+            @include for-big-desktop-up {
+                margin-top: -60px;
+            }
+        }
+
+        .firstTree {
+            @extend .basicTree;
+            height: 236px;
+            animation-delay: 2.8s;
+
+            .firstBranch {
+                @extend .basicBranch;
+                height: 43px;
+                transform: translate(-13px, 30px) rotate(124deg);
+
+                @include for-phone-only {
+                    height: 25px;
+                    transform: translate(-11px, 30px) rotate(124deg);
+                }
+
+                @include for-tablet-portrait-up {
+                    height: 30px;
+                    transform: translate(-13px, 30px) rotate(124deg);
+                }
+
+                @include for-tablet-landscape-up {
+                    height: 35px;
+                    transform: translate(-13px, 30px) rotate(124deg);
+                }
+
+                @include for-desktop-up {
+                    height: 43px;
+                    transform: translate(-17px, 30px) rotate(124deg);
+                }
+
+                @include for-big-desktop-up {
+                    height: 47px;
+                }
+            }
+
+            .secondBranch {
+                @extend .basicBranch;
+                height: 40px;
+                transform: translate(16px, 37px) rotate(68deg);
+
+                @include for-phone-only {
+                    height: 23px;
+                    transform: translate(11px, 37px) rotate(68deg);
+                }
+
+                @include for-tablet-portrait-up {
+                    height: 27px;
+                    transform: translate(11px, 37px) rotate(68deg);
+                }
+
+                @include for-tablet-landscape-up {
+                    height: 33px;
+                    transform: translate(16px, 37px) rotate(68deg);
+                }
+
+                @include for-desktop-up {
+                    height: 40px;
+                    transform: translate(16px, 37px) rotate(68deg);
+                }
+
+                @include for-big-desktop-up {
+                    height: 45px;
+                }
+            }
+
+            @include for-phone-only {
+                height: 156px;
+            }
+
+            @include for-tablet-portrait-only {
+                height: 196px;
+            }
+
+            @include for-tablet-landscape-up {
+                height: 216px;
+            }
+
+            @include for-desktop-up {
+                height: 236px;
+            }
+
+            @include for-big-desktop-up {
+                height: 256px;
+            }
+        }
+
+        @include for-phone-only {
+            width: 86px;
+            margin-left: 17%;
+        }
+
+        @include for-tablet-landscape-up {
+            width: 116px;
+        }
+
+        @include for-desktop-up {
+            width: 126px;
+        }
+
+        @include for-big-desktop-up {
+            width: 136px;
+        }
+
+        @include for-tablet-portrait-only {
+            margin-left: 29%;
+            width: 106px;
+        }
+    }
+
+    .secondTreeContainer {
+        display: inline-block;
+        width: 134px;
+        position: relative;
+        margin-left: -30px;
+
+        .yellow {
+            @extend .basicFiller;
+            margin-top: -50px;
+            animation-delay: 5.5s;
+
+            @include for-phone-only {
+                margin-top: -20px;
+            }
+
+            @include for-tablet-portrait-up {
+                margin-top: -30px;
+            }
+
+            @include for-tablet-landscape-up {
+                margin-top: -40px;
+            }
+
+            @include for-desktop-up {
+                margin-top: -50px;
+            }
+
+            @include for-big-desktop-up {
+                margin-top: -60px;
+            }
+        }
+
+        .secondTree {
+            @extend .basicTree;
+            height: 274px;
+            animation-delay: 2.3s;
+
+            .firstBranch {
+                @extend .basicBranch;
+                height: 27px;
+                transform: translate(9px, 45px) rotate(58deg);
+
+                @include for-phone-only {
+                    height: 23px;
+                }
+
+                @include for-tablet-portrait-only {
+                    transform: translate(10px, 45px) rotate(58deg);
+                }
+            }
+
+            .secondBranch {
+                @extend .basicBranch;
+                height: 37px;
+                transform: translate(-12px, 50px) rotate(-50deg);
+
+                @include for-phone-only {
+                    height: 27px;
+                    transform: translate(-10px, 50px) rotate(-50deg);
+                }
+
+                @include for-tablet-portrait-only {
+                    transform: translate(-13px, 50px) rotate(-50deg);
+                }
+            }
+
+            .thirdBranch {
+                @extend .basicBranch;
+                height: 48px;
+                transform: translate(-20px, 110px) rotate(-72deg);
+
+                @include for-phone-only {
+                    height: 30px;
+                    transform: translate(-14px, 86px) rotate(-72deg);
+                }
+
+                @include for-tablet-portrait-only {
+                    transform: translate(-21px, 90px) rotate(-72deg);
+                }
+            }
+
+            @include for-phone-only {
+                height: 194px;
+            }
+
+            @include for-tablet-portrait-up {
+                height: 234px;
+            }
+
+            @include for-tablet-landscape-up {
+                height: 254px;
+            }
+
+            @include for-desktop-up {
+                height: 274px;
+            }
+
+            @include for-big-desktop-up {
+                height: 294px;
+            }
+        }
+
+        @include for-phone-only {
+            width: 94px;
+        }
+
+        @include for-tablet-portrait-up {
+            width: 114px;
+        }
+
+        @include for-tablet-landscape-up {
+            width: 124px;
+        }
+
+        @include for-desktop-up {
+            width: 134px;
+        }
+
+        @include for-big-desktop-up {
+            width: 144px;
+        }
+    }
+
+    .thirdTreeContainer {
+        display: inline-block;
+        width: 126px;
+        position: relative;
+        margin-left: 10%;
+
+        .bigGreen {
+            @extend .basicFiller;
+            margin-top: -85px;
+            animation-delay: 5s;
+
+            @include for-phone-only {
+                margin-top: -55px;
+            }
+
+            @include for-tablet-portrait-up {
+                margin-top: -75px;
+            }
+
+            @include for-tablet-landscape-up {
+                margin-top: -75px;
+            }
+
+            @include for-desktop-up {
+                margin-top: -85px;
+            }
+
+            @include for-big-desktop-up {
+                margin-top: -95px;
+            }
+        }
+
+        .thirdTree {
+            @extend .basicTree;
+            height: 216px;
+            animation-delay: 3.5s;
+
+            .firstBranch {
+                @extend .basicBranch;
+                height: 36px;
+                transform: translate(14px, 32px) rotate(65deg);
+
+                @include for-phone-only {
+                    height: 25px;
+                    transform: translate(11px, 32px) rotate(65deg);
+                }
+
+                @include for-tablet-portrait-only {
+                    transform: translate(15px, 32px) rotate(65deg);
+                }
+            }
+
+            .secondBranch {
+                @extend .basicBranch;
+                height: 27px;
+                transform: translate(-14px, 45px) rotate(105deg);
+
+                @include for-phone-only {
+                    height: 23px;
+                    transform: translate(-11px, 36px) rotate(105deg);
+                }
+            }
+
+            .thirdBranch {
+                @extend .basicBranch;
+                height: 47px;
+                transform: translate(20px, 72px) rotate(65deg);
+
+                @include for-phone-only {
+                    height: 30px;
+                    transform: translate(13px, 27px) rotate(65deg);
+                }
+
+                @include for-tablet-portrait-up {
+                    transform: translate(16px, 45px) rotate(65deg);
+                }
+
+                @include for-tablet-landscape-up {
+                    transform: translate(20px, 72px) rotate(65deg);
+                }
+
+                @include for-desktop-up {
+                    transform: translate(20px, 72px) rotate(65deg);
+                }
+
+                @include for-big-desktop-up {
+                    transform: translate(20px, 72px) rotate(65deg);
+                }
+
+                @include for-tablet-portrait-only {
+                    height: 35px;
+                }
+            }
+
+            @include for-phone-only {
+                height: 136px;
+            }
+
+            @include for-tablet-portrait-up {
+                height: 176px;
+            }
+
+            @include for-tablet-landscape-up {
+                height: 196px;
+            }
+
+            @include for-desktop-up {
+                height: 216px;
+            }
+
+            @include for-big-desktop-up {
+                height: 236px;
+            }
+        }
+
+        @include for-phone-only {
+            width: 76px;
+        }
+
+        @include for-tablet-portrait-up {
+            width: 106px;
+        }
+
+        @include for-tablet-landscape-up {
+            width: 116px;
+        }
+
+        @include for-desktop-up {
+            width: 126px;
+        }
+
+        @include for-big-desktop-up {
+            width: 136px;
+        }
+    }
+
+    .basicPath {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        fill: $background;
+    }
+
+    .basicBush {
+        display: inline-block;
+        position: absolute;
+        bottom: 0px;
+    }
+
+    .bush1 {
+        @extend .basicBush;
+        height: 40px;
+        left: 35%;
+        z-index: 22;
+
+        .path {
+            @extend .basicPath;
+            animation: dashGreen 2s linear forwards;
+            animation-delay: 1.75s;
+        }
+
+        @include for-phone-only {
+            height: 25px;
+            left: 19%;
+        }
+
+        @include for-tablet-portrait-only {
+            height: 30px;
+            left: 32%;
+        }
+    }
+
+    .bush2 {
+        @extend .basicBush;
+        height: 47px;
+        left: 40%;
+        z-index: 21;
+
+        .path {
+            @extend .basicPath;
+            animation: dashGreen 2s linear forwards;
+            animation-delay: 2s;
+        }
+
+        @include for-phone-only {
+            height: 30px;
+            left: 24%;
+        }
+
+        @include for-tablet-portrait-only {
+            height: 37px;
+            left: 38%;
+        }
+    }
+
+    .bush3 {
+        @extend .basicBush;
+        height: 47px;
+        left: 46%;
+        z-index: 23;
+
+        .path {
+            @extend .basicPath;
+            animation: dashYeller 2s linear forwards;
+            animation-delay: 1.5s;
+        }
+
+        @include for-phone-only {
+            height: 30px;
+            left: 33%;
+        }
+
+        @include for-tablet-portrait-only {
+            height: 37px;
+        }
+    }
+
+    .bush4 {
+        @extend .basicBush;
+        height: 55px;
+        left: 52%;
+        z-index: 22;
+
+        .path {
+            @extend .basicPath;
+            animation: dashGreen 2s linear forwards;
+            animation-delay: 2.1s;
+        }
+
+        @include for-phone-only {
+            height: 35px;
+            left: 40%;
+        }
+
+        @include for-tablet-portrait-only {
+            height: 45px;
+        }
+    }
+
+    .bush5 {
+        @extend .basicBush;
+        height: 32px;
+        left: 71%;
+        z-index: 21;
+
+        .path {
+            @extend .basicPath;
+            animation: dashYeller 2s linear forwards;
+            animation-delay: 2.17s;
+        }
+
+        @include for-phone-only {
+            height: 20px;
+            left: 66%;
+        }
+
+        @include for-tablet-portrait-only {
+            height: 22px;
+            left: 76%;
+        }
+    }
+
+    .bush6 {
+        @extend .basicBush;
+        height: 34px;
+        left: 75%;
+        z-index: 22;
+
+        .path {
+            @extend .basicPath;
+            animation: dashGreen 2s linear forwards;
+            animation-delay: 2.3s;
+        }
+
+        @include for-phone-only {
+            height: 21px;
+            left: 71%;
+        }
+
+        @include for-tablet-portrait-only {
+            height: 24px;
+            left: 80%;
+        }
+    }
+
+    .basicLeaf {
+        opacity: 0;
+        position: absolute;
+        animation: leafInOut 1.5s ease-in-out infinite alternate;
+    }
+
+    .leaf1 {
+        @extend .basicLeaf;
+        top: 85%;
+        left: 90%;
+
+        @include for-tablet-portrait-only {
+            transform: scale(.9);
+            left: 92%;
+        }
+    }
+
+    .leaf2 {
+        @extend .basicLeaf;
+        top: 68%;
+        left: 67%;
+
+        @include for-tablet-portrait-only {
+            transform: scale(.9);
+        }
+    }
+
+    .leaf3 {
+        @extend .basicLeaf;
+        top: 81%;
+        left: 58%;
+
+        @include for-tablet-portrait-only {
+            transform: scale(.9);
+            left: 60%;
+        }
+    }
+
+    .leaf4 {
+        @extend .basicLeaf;
+        top: 62%;
+        left: 85%;
+
+        @include for-tablet-portrait-only {
+            transform: scale(.9);
+            left: 87%;
+        }
+    }
+
+    .leaf5 {
+        @extend .basicLeaf;
+        top: 55%;
+        left: 32%;
+
+        @include for-tablet-portrait-only {
+            transform: scale(.9);
+        }
+    }
+
+    .leaf6 {
+        @extend .basicLeaf;
+        top: 63%;
+        left: 26%;
+
+        @include for-tablet-portrait-only {
+            transform: scale(.9);
+        }
+    }
+
+    .leaf7 {
+        @extend .basicLeaf;
+        top: 37%;
+        left: 43%;
+
+        @include for-tablet-portrait-only {
+            transform: scale(.9);
+        }
+    }
+
+    .leaf8 {
+        @extend .basicLeaf;
+        top: 50%;
+        left: 60%;
+
+        @include for-tablet-portrait-only {
+            transform: scale(.9);
+        }
+    }
+
+    .leaf9 {
+        @extend .basicLeaf;
+        top: 84%;
+        left: 30%;
+
+        @include for-tablet-portrait-only {
+            transform: scale(.9);
+            left: 28%;
+        }
+    }
+
+    .leaf10 {
+        @extend .basicLeaf;
+        top: 41%;
+        left: 68%;
+
+        @include for-tablet-portrait-only {
+            transform: scale(.9);
+        }
+    }
+}
+
+.copyright {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    margin-left: -111.75px;
+
+    @include for-phone-only {
+        font-size: 12px;
+        margin-left: -83.815px;
+    }
+}

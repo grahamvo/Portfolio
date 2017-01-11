@@ -1,47 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactDOMServer from 'react-dom/server';
-import { applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import { Router, RouterContext, match, browserHistory } from 'react-router';
-import { createHistory, createMemoryHistory } from 'history';
-import { syncHistoryWithStore } from 'react-router-redux';
-import createStore from './src/redux/createStore';
-import baseHTML from './baseHTML';
+import {Provider} from 'react-redux';
+import {Router, browserHistory} from 'react-router';
+import {syncHistoryWithStore} from 'react-router-redux';
+import createStore from './src/js/redux/createStore';
 
 // Routes
-import routes from './routes';
+import Routes from './src/js/Routes';
 
 const store = createStore();
+const history = syncHistoryWithStore(browserHistory, store);
 
-if (typeof document !== 'undefined') {
-    const history = syncHistoryWithStore(browserHistory, store);
-    const app = document.getElementById('app');
-
-    ReactDOM.render(
-        (
-        <Provider store={ store }>
-            <Router history={ history }>
-                { routes }
-            </Router>
-        </Provider>
-        ),
-        app
-    );
-}
-
-export default (locals, callback) => {
-    const history = createMemoryHistory();
-    console.info(locals.path);
-    const location = history.createLocation(locals.path);
-
-    match({ routes, location }, (error, redirectLocation, renderProps) => {
-        const html = ReactDOMServer.renderToString(
-            <Provider store={ store }>
-                <RouterContext { ...renderProps } />
-            </Provider>
-        );
-
-        callback(null, baseHTML({ html }));
-    });
-};
+ReactDOM.render(
+    (
+    <Provider store={ store }>
+        <Router history={ history }>
+            { Routes }
+        </Router>
+    </Provider>
+    ),
+    document.getElementById('root')
+);

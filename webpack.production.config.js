@@ -1,49 +1,60 @@
-let loaders;
-
-if (process.env.NODE_ENV === 'development') {
-    loaders = ['react-hot', 'babel'];
-} else {
-    loaders = ['babel'];
-}
-
-const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const data = require('./data');
+const webpack = require('webpack');
+const path = require('path');
+const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    devtool: 'eval',
-    entry: {
-        main: './app-client.js',
-        css: './src/scss/app.scss'
-    },
+    devtool: 'cheap-module-source-map',
+    entry: `${__dirname}/app-client`,
     output: {
-        path: `${__dirname}/public/dist`,
-        filename: '[name].bundle.js',
-        publicPath: '/dist/',
-        libraryTarget: 'umd'
+        path: path.join(__dirname, 'dist'),
+        filename: 'bundle.js',
     },
     module: {
         loaders: [
             {
-                test: /\.js$/,
-                loaders,
-                exclude: /node_modules/
+                test: /\.jsx?$/,
+                exclude: `${__dirname}/node_modules/`,
+                loader: 'babel-loader',
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract(
-                    'style',
-                    'css?sourceMap!sass?sourceMap'
-                )
+                loader: 'style!css-loader?modules&importLoaders=1&' +
+                    'localIdentName=[name]__[local]___[hash:base64:5]' +
+                    '!sass?sourceMap',
             },
             {
-                test: /\.(png|jpg)$/,
-                loader: 'file-loader?name=img/img-[hash:6].[ext]'
-            }
-        ]
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loaders: [
+                    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
+                ],
+            },
+            {
+                test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'url',
+            },
+            {
+                test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+                loader: 'file',
+            },
+        ],
+    },
+    postcss: function() {
+        return [autoprefixer];
+    },
+    resolve: {
+        extensions: ['', '.js', '.jsx'],
     },
     plugins: [
-        new ExtractTextPlugin('app.css'),
-        new StaticSiteGeneratorPlugin('main', data.routes)
-    ]
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: `${__dirname}/src/index.tmpl.html`,
+            inject: true,
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production'),
+            },
+        }),
+    ],
 };

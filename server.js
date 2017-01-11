@@ -5,10 +5,10 @@ const config = require('./webpack.config');
 new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     stats: {
-        colors: true
+        colors: true,
     },
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: true,
 }).listen(3000, 'localhost', function(err, result) {
     if (err) {
         return console.log(err);

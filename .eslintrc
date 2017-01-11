@@ -10,7 +10,9 @@
     "prefer-const": "error",
     "object-curly-spacing": 0,
     "no-underscore-dangle": "error",
-    "quote-props": 0
+    "quote-props": 0,
+    "require-jsdoc": 0,
+    "no-invalid-this": 0
   },
   "env": {
     "browser": true,

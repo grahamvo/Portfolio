@@ -1,12 +1,15 @@
+@import "../color";
+@import "../keyframes";
+
 //Styling for Home page
-.home-main {
+.homeMain {
     position: absolute;
     left: 0;
     width: 100%;
     height: 100%;
 }
 
-.big-hello-no {
+.bigHelloNo {
     color: #fff;
     text-align: center;
     background-color: $main-red;
@@ -30,7 +33,7 @@
     }
 }
 
-.big-hello {
+.bigHello {
     color: #fff;
     text-align: center;
     animation: slideIn 2s;
@@ -55,7 +58,7 @@
     }
 }
 
-.little-hello-no {
+.littleHelloNo {
     opacity: 0;
     color: $main-red;
     background-color: #fff;
@@ -80,7 +83,7 @@
     }
 }
 
-.little-hello {
+.littleHello {
     opacity: 0;
     color: $main-red;
     background-color: #fff;
@@ -108,11 +111,11 @@
     }
 }
 
-.hello-container {
+.helloContainer {
     margin-top: 250px
 }
 
-.icon-row-no {
+.iconRowNo {
     opacity: 0;
     margin-top: 150px;
     font-size: 20px;
@@ -130,7 +133,7 @@
     }
 }
 
-.icon-row {
+.iconRow {
     opacity: 0;
     margin-top: 150px;
     font-size: 20px;

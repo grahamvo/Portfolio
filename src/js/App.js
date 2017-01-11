@@ -1,31 +1,13 @@
-import React, { Component, PropTypes } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import Header from './header/Header';
+import React, {PropTypes} from 'react';
 
-export default class App extends Component {
-    static propTypes = {
-        children: PropTypes.object,
-    }
+const App = ({children}) => (
+    <div>
+        {children}
+    </div>
+);
 
-    componentDidMount() {
-        document.body.className = '';
-    }
+App.propTypes = {
+    children: PropTypes.object,
+};
 
-    render() {
-        return (
-            <div>
-                <Header />
-
-                <ReactCSSTransitionGroup
-                    component="div"
-                    transitionName="page-animate"
-                    transitionEnterTimeout={ 500 }
-                    transitionLeaveTimeout={ 500 }>
-                    { React.cloneElement(this.props.children, {
-                        key: 'this2',
-                    }) }
-                </ReactCSSTransitionGroup>
-            </div>
-        );
-    }
-}
+export default App;

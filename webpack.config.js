@@ -1,49 +1,65 @@
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    devtool: 'eval',
+    devtool: 'cheap-module-eval-source-map',
     entry: [
         'webpack-dev-server/client?http://0.0.0.0:3000',
         'webpack/hot/only-dev-server',
-        `${__dirname}/src/js/App`
+        'font-awesome-loader',
+        `${__dirname}/app-client`,
     ],
     output: {
         path: __dirname,
         filename: 'bundle.js',
-        publicPath: '/'
+        publicPath: '/',
     },
     module: {
+        preLoaders: [
+            {
+                test: /(\.js$|\.jsx$)/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+            },
+        ],
         loaders: [
             {
                 test: /\.jsx?$/,
-                include: `${__dirname}/src/js`,
-                loaders: ['react-hot', 'babel-loader']
-            },
-            {
-                test: /\.js?/,
-                include: `${__dirname}/src/js`,
-                loaders: ['babel-loader', 'eslint-loader']
+                exclude: `${__dirname}/node_modules/`,
+                loaders: ['react-hot', 'babel-loader'],
             },
             {
                 test: /\.scss$/,
                 loader: 'style!css-loader?modules&importLoaders=1&' +
                     'localIdentName=[name]__[local]___[hash:base64:5]' +
-                    '!sass?sourceMap'
+                    '!sass?sourceMap',
             },
             {
-                test: /\.png$/,
-                loader: "url-loader?mimetype=image/png"
-            }
-        ]
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loaders: [
+                    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
+                ],
+            },
+            {
+                test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'url',
+            },
+            {
+                test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+                loader: 'file',
+            },
+        ],
     },
     eslint: {
-        configFile: './.eslintrc'
+        configFile: './.eslintrc',
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['', '.js', '.jsx'],
     },
     plugins: [
-        new webpack.NoErrorsPlugin(),
-        new webpack.HotModuleReplacementPlugin()
-    ]
+        new HtmlWebpackPlugin({
+            template: `${__dirname}/src/index.tmpl.html`,
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+    ],
 };
