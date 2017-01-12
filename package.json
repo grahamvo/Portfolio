@@ -5,7 +5,7 @@
   "author": "Graham von Oehsen",
   "main": "app-server.js",
   "scripts": {
-    "build": "rimraf dist && NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors && cp ./CNAME ./dist/",
+    "build": "rimraf dist && NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors && cp ./CNAME ./dist/ && cp ./src/404.html ./dist",
     "deploy": "gh-pages -d dist -r https://github.com/grahamvo/grahamvo.github.io.git -b master",
     "start": "NODE_ENV=development node server.js",
     "clean": "rm -rf node_modules/gh-pages/.cache"

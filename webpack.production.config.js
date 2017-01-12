@@ -52,7 +52,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: `${__dirname}/src/index.tmpl.html`,
+            template: `${__dirname}/src/buildIndex.tmpl.html`,
             inject: true,
         }),
         new ExtractTextPlugin('style.css'),
