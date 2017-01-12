@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     devtool: 'cheap-module-source-map',
@@ -19,9 +20,12 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: 'style!css-loader?modules&importLoaders=1&' +
-                    'localIdentName=[name]__[local]___[hash:base64:5]' +
-                    '!sass?sourceMap',
+                loader: ExtractTextPlugin.extract(
+                    'style-loader',
+                    'css-loader?modules&importLoaders=1&' +
+                        'localIdentName=[name]__[local]___[hash:base64:5]' +
+                        '!sass?sourceMap!postcss-loader'
+                ),
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
@@ -51,6 +55,7 @@ module.exports = {
             template: `${__dirname}/src/index.tmpl.html`,
             inject: true,
         }),
+        new ExtractTextPlugin('style.css'),
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('production'),
