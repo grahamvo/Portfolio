@@ -7,6 +7,7 @@ This is the repository for the source code of my portfolio website. The site is 
 
 - React
 - Redux
+- React Router
 - Webpack
 - Npm
 - SCSS
