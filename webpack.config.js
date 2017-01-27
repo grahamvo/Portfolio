@@ -15,46 +15,73 @@ module.exports = {
         publicPath: '/',
     },
     module: {
-        preLoaders: [
+        rules: [
             {
                 test: /(\.js$|\.jsx$)/,
+                enforce: 'pre',
                 exclude: /node_modules/,
-                loader: 'eslint-loader',
-            },
-        ],
-        loaders: [
-            {
-                test: /\.jsx?$/,
-                exclude: `${__dirname}/node_modules/`,
-                loaders: ['react-hot', 'babel-loader'],
-            },
-            {
-                test: /\.scss$/,
-                loader: 'style!css-loader?modules&importLoaders=1&' +
-                    'localIdentName=[name]__[local]___[hash:base64:5]' +
-                    '!sass?sourceMap',
-            },
-            {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                loaders: [
-                    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
+                use: [
+                    {
+                        loader: 'eslint-loader',
+                        options: {
+                            configFile: './.eslintrc',
+                        },
+                    },
                 ],
             },
             {
+                test: /\.jsx?$/,
+                exclude: `${__dirname}/node_modules/`,
+                use: [
+                    'react-hot-loader',
+                    'babel-loader',
+                ],
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            importLoaders: 1,
+                            localIdentName: '[name]__[local]___[hash:base64:5]',
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loader: 'image-webpack-loader',
+                options: {
+                    bypassOnDebug: true,
+                    gifsicle: {
+                        interlaced: false,
+                    },
+                    optipng: {
+                        optimizationLevel: 7,
+                    },
+                },
+            },
+            {
                 test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: 'url',
+                loader: 'url-loader',
             },
             {
                 test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
-                loader: 'file',
+                loader: 'file-loader',
             },
         ],
     },
-    eslint: {
-        configFile: './.eslintrc',
-    },
     resolve: {
-        extensions: ['', '.js', '.jsx'],
+        extensions: ['.js', '.jsx'],
     },
     plugins: [
         new HtmlWebpackPlugin({
