@@ -25,7 +25,6 @@ This is the repository for the source code of my portfolio website. The site is 
 
 4. To create a build: `$ npm run build`
 
-**Note:**
 >- Build files will be in `./dist`
 
 5. To clean the `node_modules/gh-pages/.cache` folder: `$ npm run clean`
