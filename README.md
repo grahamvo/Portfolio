@@ -24,7 +24,6 @@ This is the repository for the source code of my portfolio website. The site is 
 3. To run in dev-mode: `$ npm start` then navagate to `http://localhost:3000`
 
 4. To create a build: `$ npm run build`
-
->- Build files will be in `./dist`
+   >Build files will be in `./dist`
 
 5. To clean the `node_modules/gh-pages/.cache` folder: `$ npm run clean`
