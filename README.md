@@ -3,7 +3,7 @@ grahamvo.io
 
 This is the repository for the source code of my portfolio website. The site is hosted at [grahamvo.io](http://grahamvo.io).
 
-##Tools Used:
+## Tools Used:
 
 - React
 - Redux
@@ -15,7 +15,7 @@ This is the repository for the source code of my portfolio website. The site is 
 - Eslint
 - GitHub Pages
 
-##Installation
+## Installation
 1. Clone repository:
  `$ git clone https://github.com/grahamvo/Portfolio.git`
 
