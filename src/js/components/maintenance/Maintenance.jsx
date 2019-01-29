@@ -52,7 +52,7 @@ export default class Maintenance extends Component {
                     <Leaves />
                     <div className={styles.bottomLine} />
                 </div>
-                <p className={styles.copyright}>&copy; Graham von Oehsen 2016</p>
+                <p className={styles.copyright}>&copy; Graham von Oehsen 2019</p>
             </div>
         );
     }
